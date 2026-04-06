@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pet Huis Veterinary Practice — Klinik Hewan Fatmawati</title>
+<meta name="description" content="Pet Huis Veterinary Practice — Klinik hewan profesional di Fatmawati, Jakarta Selatan. Konsultasi, vaksinasi, grooming, dan perawatan lengkap untuk anabul kesayangan Anda."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --amber:        #F5A623;
+    --amber-light:  #FDD99A;
+    --amber-pale:   #FEF3DC;
+    --amber-dark:   #C4821A;
+    --cream:        #FAFAF5;
+    --cream-2:      #F4EFE6;
+    --mint:         #A8C5A0;
+    --mint-light:   #D6EAD2;
+    --mint-pale:    #EEF7EC;
+    --charcoal:     #1E1E1E;
+    --body:         #3D3D3D;
+    --muted:        #7A7A7A;
+    --white:        #FFFFFF;
+    --radius-sm:    8px;
+    --radius-md:    16px;
+    --radius-lg:    28px;
+    --radius-xl:    48px;
+    --shadow-sm:    0 2px 12px rgba(0,0,0,0.06);
+    --shadow-md:    0 8px 32px rgba(0,0,0,0.10);
+    --shadow-lg:    0 20px 60px rgba(0,0,0,0.13);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--cream);
+    color: var(--body);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--charcoal); }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 72px;
+    background: rgba(250,250,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(245,166,35,0.15);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: var(--shadow-sm); }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--charcoal); text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 40px; height: 40px; border-radius: 12px;
+    background: var(--amber);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .nav-logo span { color: var(--amber); }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.875rem; font-weight: 500;
+    color: var(--body); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--amber); }
+
+  .nav-cta {
+    background: var(--amber); color: var(--white) !important;
+    padding: 10px 22px; border-radius: 100px;
+    font-size: 0.875rem !important; font-weight: 600 !important;
+    transition: background 0.2s, transform 0.15s !important;
+    box-shadow: 0 4px 16px rgba(245,166,35,0.35);
+  }
+  .nav-cta:hover { background: var(--amber-dark) !important; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    padding: 120px 5% 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-blob-1 {
+    position: absolute; top: -10%; right: -5%;
+    width: 55vw; height: 55vw; max-width: 700px; max-height: 700px;
+    background: var(--amber-pale);
+    border-radius: 62% 38% 55% 45% / 48% 52% 48% 52%;
+    z-index: 0;
+  }
+  .hero-blob-2 {
+    position: absolute; bottom: -8%; left: -4%;
+    width: 35vw; height: 35vw; max-width: 450px; max-height: 450px;
+    background: var(--mint-pale);
+    border-radius: 42% 58% 35% 65% / 55% 45% 55% 45%;
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--amber-pale); color: var(--amber-dark);
+    font-size: 0.8rem; font-weight: 600;
+    padding: 8px 16px; border-radius: 100px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(245,166,35,0.3);
+  }
+  .hero-badge::before {
+    content: ''; display: inline-block;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--amber);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--amber);
+  }
+
+  .hero-desc {
+    font-size: 1.0625rem; line-height: 1.75;
+    color: var(--muted); max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--amber); color: var(--white);
+    padding: 14px 28px; border-radius: 100px;
+    font-size: 0.9375rem; font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(245,166,35,0.4);
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--amber-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(245,166,35,0.5); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--white); color: var(--charcoal);
+    padding: 14px 28px; border-radius: 100px;
+    font-size: 0.9375rem; font-weight: 500;
+    text-decoration: none;
+    border: 1.5px solid rgba(0,0,0,0.1);
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--amber); color: var(--amber); }
+
+  .hero-stats {
+    display: flex; gap: 2rem; margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--amber);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+  /* Hero visual side */
+  .hero-visual { position: relative; z-index: 1; }
+
+  .hero-img-main {
+    width: 100%; aspect-ratio: 4/5;
+    border-radius: var(--radius-xl) var(--radius-xl) var(--radius-xl) 0;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--amber-light) 0%, var(--amber-pale) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 6rem; overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+
+  .hero-img-photo {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+    background: linear-gradient(145deg, #FDD99A 0%, #FEF3DC 60%, #D6EAD2 100%);
+  }
+
+  .hero-float-card {
+    position: absolute; bottom: 2rem; left: -2rem;
+    background: var(--white); border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    box-shadow: var(--shadow-md);
+    display: flex; align-items: center; gap: 12px;
+    min-width: 200px;
+    animation: floatY 4s ease-in-out infinite;
+  }
+  @keyframes floatY {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .float-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--amber-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+  }
+  .float-num { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--charcoal); }
+  .float-label { font-size: 0.75rem; color: var(--muted); }
+
+  .hero-float-badge {
+    position: absolute; top: 1.5rem; right: -1.5rem;
+    background: var(--mint); color: var(--white);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem; font-weight: 600;
+    box-shadow: var(--shadow-sm);
+    animation: floatY 4s ease-in-out infinite 2s;
+  }
+
+  /* ── TICKER ── */
+  .ticker-wrap {
+    background: var(--amber);
+    padding: 14px 0;
+    overflow: hidden;
+  }
+  .ticker-track {
+    display: flex; gap: 0;
+    animation: ticker 28s linear infinite;
+    width: max-content;
+  }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker-item {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 0 2rem;
+    font-size: 0.875rem; font-weight: 600; color: var(--white);
+    white-space: nowrap;
+  }
+  .ticker-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 100px 5%; }
+
+  .section-tag {
+    display: inline-block;
+    background: var(--amber-pale); color: var(--amber-dark);
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(245,166,35,0.25);
+  }
+  .section-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.2; margin-bottom: 1rem; }
+  .section-desc { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 560px; }
+  .section-header { margin-bottom: 3.5rem; }
+
+  /* ── LAYANAN ── */
+  #layanan { background: var(--white); }
+
+  .layanan-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: default;
+    border: 1.5px solid transparent;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(245,166,35,0.2);
+  }
+  .service-card.featured {
+    background: var(--amber);
+    color: var(--white);
+  }
+  .service-card.featured h3,
+  .service-card.featured p { color: var(--white); }
+
+  .service-icon {
+    width: 56px; height: 56px;
+    border-radius: var(--radius-sm);
+    background: var(--amber-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.75rem; margin-bottom: 1.25rem;
+  }
+  .service-card.featured .service-icon { background: rgba(255,255,255,0.25); }
+
+  .service-card h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.0625rem; font-weight: 600; margin-bottom: 0.5rem;
+  }
+  .service-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+  .service-card.featured p { color: rgba(255,255,255,0.85); }
+
+  .service-tag {
+    display: inline-block; margin-top: 1rem;
+    background: rgba(245,166,35,0.12); color: var(--amber-dark);
+    font-size: 0.75rem; font-weight: 600;
+    padding: 4px 10px; border-radius: 100px;
+  }
+  .service-card.featured .service-tag {
+    background: rgba(255,255,255,0.25); color: var(--white);
+  }
+
+  /* ── TIM DOKTER ── */
+  #dokter { background: var(--cream); position: relative; overflow: hidden; }
+
+  .dokter-bg-blob {
+    position: absolute; top: -100px; right: -150px;
+    width: 600px; height: 600px;
+    background: var(--mint-pale);
+    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+    z-index: 0;
+  }
+
+  .dokter-header-wrap { position: relative; z-index: 1; }
+  .dokter-header-wrap .section-header { max-width: 500px; }
+
+  .doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    position: relative; z-index: 1;
+  }
+
+  .doctor-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    box-shadow: var(--shadow-sm);
+  }
+  .doctor-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+
+  .doctor-photo {
+    width: 100%; aspect-ratio: 3/4;
+    object-fit: cover;
+    background: linear-gradient(160deg, var(--amber-pale) 0%, var(--mint-pale) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem; position: relative;
+  }
+  .doctor-photo-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+  }
+  .doctor-info { padding: 1.25rem; }
+  .doctor-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9375rem; font-weight: 700; color: var(--charcoal); }
+  .doctor-spec { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
+  .doctor-avail {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.72rem; font-weight: 600;
+    color: #2d7a4f; background: #e6f7ee;
+    padding: 3px 10px; border-radius: 100px; margin-top: 10px;
+  }
+  .doctor-avail::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%; background: #2d7a4f;
+  }
+
+  /* ── GALERI ── */
+  #galeri { background: var(--white); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 240px 240px;
+    gap: 1rem;
+  }
+  .gallery-item {
+    border-radius: var(--radius-md);
+    overflow: hidden; position: relative;
+    background: linear-gradient(135deg, var(--amber-pale), var(--mint-pale));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem;
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  .gallery-item:hover { transform: scale(1.02); }
+  .gallery-item:first-child { grid-row: 1 / 3; }
+  .gallery-item:nth-child(4) { background: linear-gradient(135deg, var(--mint-pale), #d6ead2); }
+  .gallery-item:nth-child(5) { background: linear-gradient(135deg, var(--cream-2), var(--amber-pale)); }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+  /* ── TESTIMONI ── */
+  #testimoni { background: var(--cream-2); position: relative; overflow: hidden; }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .testi-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+  }
+  .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .testi-card.featured { background: var(--amber); }
+  .testi-card.featured .testi-text,
+  .testi-card.featured .testi-name { color: var(--white); }
+  .testi-card.featured .testi-role { color: rgba(255,255,255,0.75); }
+  .testi-card.featured .stars { color: rgba(255,255,255,0.9); }
+
+  .stars { font-size: 0.95rem; color: var(--amber); margin-bottom: 1rem; letter-spacing: 2px; }
+  .testi-text { font-size: 0.9375rem; line-height: 1.75; color: var(--body); margin-bottom: 1.5rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--amber-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .testi-card.featured .testi-avatar { background: rgba(255,255,255,0.25); }
+  .testi-name { font-size: 0.875rem; font-weight: 700; color: var(--charcoal); }
+  .testi-role { font-size: 0.775rem; color: var(--muted); }
+
+  /* ── CTA / KONTAK ── */
+  #kontak {
+    background: var(--charcoal);
+    padding: 100px 5%;
+    position: relative; overflow: hidden;
+  }
+  .kontak-blob {
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: rgba(245,166,35,0.08);
+    border-radius: 50%; z-index: 0;
+  }
+  .kontak-blob-2 {
+    position: absolute; bottom: -80px; left: -80px;
+    width: 350px; height: 350px;
+    background: rgba(168,197,160,0.06);
+    border-radius: 50%; z-index: 0;
+  }
+
+  .kontak-inner {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+  }
+
+  .kontak-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2; color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .kontak-title em { color: var(--amber); font-style: italic; }
+  .kontak-desc { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 2rem; }
+
+  .kontak-actions { display: flex; flex-direction: column; gap: 1rem; }
+
+  .btn-wa {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: #25D366; color: var(--white);
+    padding: 16px 32px; border-radius: 100px;
+    font-size: 1rem; font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+    transition: all 0.2s; width: fit-content;
+  }
+  .btn-wa:hover { background: #1da851; transform: translateY(-2px); }
+  .btn-wa-icon { font-size: 1.3rem; }
+
+  .kontak-info-cards {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .info-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .info-icon {
+    font-size: 1.4rem; flex-shrink: 0;
+    width: 44px; height: 44px;
+    background: rgba(245,166,35,0.15);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .info-label { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .info-value { font-size: 0.9375rem; color: var(--white); font-weight: 500; line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111; padding: 2.5rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); }
+  .footer-brand span { color: var(--amber); }
+  .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--amber); }
+
+  /* ── FADE IN ANIMATION ── */
+  .fade-up {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    #hero { grid-template-columns: 1fr; gap: 40px; min-height: auto; padding-top: 100px; }
+    .hero-visual { max-width: 400px; margin: 0 auto; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .doctors-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .kontak-inner { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    section { padding: 70px 5%; }
+    .services-grid { grid-template-columns: 1fr; }
+    .doctors-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:first-child { grid-row: auto; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">🏠</div>
+    Pet <span>Huis</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#layanan">Layanan</a></li>
+    <li><a href="#dokter">Tim Dokter</a></li>
+    <li><a href="#galeri">Galeri</a></li>
+    <li><a href="#testimoni">Testimoni</a></li>
+    <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob-1"></div>
+  <div class="hero-blob-2"></div>
+
+  <div class="hero-content fade-up">
+    <div class="hero-badge">Klinik Hewan Fatmawati, Jakarta Selatan</div>
+
+    <h1 class="hero-title">
+      Tempat Terpercaya<br/>untuk <em>Anabul</em><br/>Kesayangan Anda
+    </h1>
+
+    <p class="hero-desc">
+      Pet Huis Veterinary Practice hadir dengan tim dokter hewan berpengalaman, fasilitas modern, dan pelayanan penuh kasih untuk menjaga kesehatan hewan peliharaan Anda.
+    </p>
+
+    <div class="hero-actions">
+      <a href="https://wa.me/6287789788818" class="btn-primary">
+        🐾 Konsultasi via WhatsApp
+      </a>
+      <a href="#layanan" class="btn-secondary">
+        Lihat Layanan ↓
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Dokter Hewan</div>
+      </div>
+      <div>
+        <div class="stat-num">7 Hari</div>
+        <div class="stat-label">Buka Setiap Hari</div>
+      </div>
+      <div>
+        <div class="stat-num">1000+</div>
+        <div class="stat-label">Pasien Tertangani</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-up" style="transition-delay:0.15s">
+    <div class="hero-img-main">
+      <div class="hero-img-photo">🐶🐱</div>
+    </div>
+    <div class="hero-float-card">
+      <div class="float-icon">🏆</div>
+      <div>
+        <div class="float-num">4.9 ★</div>
+        <div class="float-label">Rating Google</div>
+      </div>
+    </div>
+    <div class="hero-float-badge">✓ Buka Hari Ini</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <!-- duplication for seamless loop -->
+    <span class="ticker-item">🐾 Vaksinasi<span class="ticker-dot"></span></span>
+    <span class="ticker-item">🔬 Pemeriksaan Umum<span class="ticker-dot"></span></span>
+    <span class="ticker-item">✂️ Grooming<span class="ticker-dot"></span></span>
+    <span class="ticker-item">🏥 Rawat Inap<span class="ticker-dot"></span></span>
+    <span class="ticker-item">🦷 Perawatan Gigi<span class="ticker-dot"></span></span>
+    <span class="ticker-item">🧪 Laboratorium<span class="ticker-dot"></span></span>
+    <span class="ticker-item">📋 Sterilisasi<span class="ticker-dot"></span></span>
+    <span class="ticker-item">💊 Konsultasi Online<span class="ticker-dot"></span></span>
+    <span class="ticker-item">🐾 Vaksinasi<span class="ticker-dot"></span></span>
+    <span class="ticker-item">🔬 Pemeriksaan Umum<span class="ticker-dot"></span></span>
+    <span class="ticker-item">✂️ Grooming<span class="ticker-dot"></span></span>
+    <span class="ticker-item">🏥 Rawat Inap<span class="ticker-dot"></span></span>
+    <span class="ticker-item">🦷 Perawatan Gigi<span class="ticker-dot"></span></span>
+    <span class="ticker-item">🧪 Laboratorium<span class="ticker-dot"></span></span>
+    <span class="ticker-item">📋 Sterilisasi<span class="ticker-dot"></span></span>
+    <span class="ticker-item">💊 Konsultasi Online<span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- LAYANAN -->
+<section id="layanan">
+  <div class="layanan-header">
+    <div>
+      <div class="section-tag">Layanan Kami</div>
+      <h2 class="section-title">Perawatan Lengkap<br/>untuk Semua Anabul</h2>
+    </div>
+    <a href="#kontak" class="btn-secondary">Tanya Lebih Lanjut →</a>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card featured fade-up">
+      <div class="service-icon">🐾</div>
+      <h3>Pemeriksaan Umum</h3>
+      <p>Konsultasi kesehatan menyeluruh dengan dokter hewan berpengalaman untuk memastikan anabul Anda selalu sehat.</p>
+      <div class="service-tag">Tersedia Setiap Hari</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:.1s">
+      <div class="service-icon">💉</div>
+      <h3>Vaksinasi</h3>
+      <p>Program vaksinasi lengkap untuk kucing, anjing, dan hewan peliharaan lainnya sesuai jadwal yang tepat.</p>
+      <div class="service-tag">Rabies & Core Vaccines</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:.2s">
+      <div class="service-icon">✂️</div>
+      <h3>Grooming & Spa</h3>
+      <p>Layanan mandi, potong kuku, trim bulu, dan perawatan telinga agar anabul selalu tampil bersih dan nyaman.</p>
+      <div class="service-tag">By Appointment</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:.3s">
+      <div class="service-icon">🏥</div>
+      <h3>Rawat Inap</h3>
+      <p>Fasilitas rawat inap dengan pemantauan 24 jam oleh tim medis profesional untuk kondisi yang membutuhkan perhatian ekstra.</p>
+      <div class="service-tag">Monitoring 24 Jam</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:.4s">
+      <div class="service-icon">🔬</div>
+      <h3>Laboratorium</h3>
+      <p>Pemeriksaan darah, urin, dan feses untuk diagnosis yang akurat dan cepat sebagai dasar penanganan terbaik.</p>
+      <div class="service-tag">Hasil Cepat</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:.5s">
+      <div class="service-icon">⚕️</div>
+      <h3>Bedah & Sterilisasi</h3>
+      <p>Prosedur bedah terencana maupun darurat dengan standar sterilitas tinggi dan penanganan anestesi yang aman.</p>
+      <div class="service-tag">Fasilitas Lengkap</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIM DOKTER -->
+<section id="dokter">
+  <div class="dokter-bg-blob"></div>
+  <div class="dokter-header-wrap">
+    <div class="section-header">
+      <div class="section-tag">Tim Kami</div>
+      <h2 class="section-title">Dokter Hewan yang Berpengalaman & Berdedikasi</h2>
+      <p class="section-desc">Ditangani langsung oleh dokter hewan berlisensi dengan spesialisasi beragam untuk kebutuhan anabul Anda.</p>
+    </div>
+  </div>
+
+  <div class="doctors-grid">
+    <div class="doctor-card fade-up">
+      <div class="doctor-photo"><div class="doctor-photo-inner">👩‍⚕️</div></div>
+      <div class="doctor-info">
+        <div class="doctor-name">Drh. Isti Handayani</div>
+        <div class="doctor-spec">General Practitioner</div>
+        <div class="doctor-avail">Senin – Sabtu</div>
+      </div>
+    </div>
+    <div class="doctor-card fade-up" style="transition-delay:.1s">
+      <div class="doctor-photo" style="background:linear-gradient(160deg,#d6ead2,#eef7ec)"><div class="doctor-photo-inner">👩‍⚕️</div></div>
+      <div class="doctor-info">
+        <div class="doctor-name">Drh. Icha</div>
+        <div class="doctor-spec">Dokter Minggu</div>
+        <div class="doctor-avail">Setiap Minggu</div>
+      </div>
+    </div>
+    <div class="doctor-card fade-up" style="transition-delay:.2s">
+      <div class="doctor-photo" style="background:linear-gradient(160deg,#fef3dc,#fdd99a)"><div class="doctor-photo-inner">👨‍⚕️</div></div>
+      <div class="doctor-info">
+        <div class="doctor-name">Drh. Dokter 3</div>
+        <div class="doctor-spec">Spesialis Bedah</div>
+        <div class="doctor-avail">Senin – Jumat</div>
+      </div>
+    </div>
+    <div class="doctor-card fade-up" style="transition-delay:.3s">
+      <div class="doctor-photo" style="background:linear-gradient(160deg,#ede0ff,#d4c5f9)"><div class="doctor-photo-inner">👩‍⚕️</div></div>
+      <div class="doctor-info">
+        <div class="doctor-name">Drh. Dokter 4</div>
+        <div class="doctor-spec">Dermatologi Hewan</div>
+        <div class="doctor-avail">Selasa – Sabtu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERI -->
+<section id="galeri">
+  <div class="section-header fade-up">
+    <div class="section-tag">Galeri</div>
+    <h2 class="section-title">Momen Berharga<br/>bersama Anabul</h2>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item fade-up" style="font-size:5rem">
+      🐕
+      <div class="gallery-overlay"></div>
+    </div>
+    <div class="gallery-item fade-up" style="transition-delay:.1s">🐈<div class="gallery-overlay"></div></div>
+    <div class="gallery-item fade-up" style="transition-delay:.2s;background:linear-gradient(135deg,#d6ead2,#a8c5a0)">🐾<div class="gallery-overlay"></div></div>
+    <div class="gallery-item fade-up" style="transition-delay:.3s;background:linear-gradient(135deg,#fdd99a,#fef3dc)">🐰<div class="gallery-overlay"></div></div>
+    <div class="gallery-item fade-up" style="transition-delay:.4s;background:linear-gradient(135deg,#f4efe6,#fdd99a)">🐦<div class="gallery-overlay"></div></div>
+  </div>
+
+  <p style="text-align:center;margin-top:2rem;font-size:0.85rem;color:var(--muted)">
+    Ikuti kami di Instagram <a href="https://instagram.com/pethuis" target="_blank" style="color:var(--amber);font-weight:600">@pethuis</a> untuk update terbaru 🐾
+  </p>
+</section>
+
+<!-- TESTIMONI -->
+<section id="testimoni">
+  <div class="section-header fade-up" style="text-align:center;max-width:600px;margin:0 auto 3.5rem">
+    <div class="section-tag">Testimoni</div>
+    <h2 class="section-title">Apa Kata Para Pemilik Anabul?</h2>
+    <p class="section-desc" style="margin:0 auto">Kepercayaan Anda adalah motivasi terbesar kami untuk terus memberikan pelayanan terbaik.</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testi-card fade-up">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Dokternya sangat sabar dan teliti. Kucing saya yang biasanya takut ke klinik jadi lebih tenang di sini. Tempatnya bersih dan nyaman banget!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">😊</div>
+        <div>
+          <div class="testi-name">Sarah M.</div>
+          <div class="testi-role">Pemilik Kucing Persia</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card featured fade-up" style="transition-delay:.15s">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Pet Huis sudah jadi klinik langganan saya selama 2 tahun. Pelayanannya konsisten, harganya transparan, dan dokternya selalu update ilmunya."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">🧑</div>
+        <div>
+          <div class="testi-name">Budi R.</div>
+          <div class="testi-role">Pemilik 2 Anjing Golden</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card fade-up" style="transition-delay:.3s">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Lokasi strategis di Fatmawati, mudah dijangkau. Stafnya ramah dan responsif di WhatsApp. Highly recommended untuk yang tinggal di Jakarta Selatan!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👩</div>
+        <div>
+          <div class="testi-name">Dita A.</div>
+          <div class="testi-role">Pemilik Kelinci & Hamster</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK / CTA -->
+<section id="kontak" style="padding:100px 5%">
+  <div class="kontak-blob"></div>
+  <div class="kontak-blob-2"></div>
+
+  <div class="kontak-inner">
+    <div class="fade-up">
+      <div class="section-tag" style="background:rgba(245,166,35,0.15);color:var(--amber-light);border-color:rgba(245,166,35,0.2)">Hubungi Kami</div>
+      <h2 class="kontak-title">Anabul Anda<br/><em>Layak</em> yang Terbaik</h2>
+      <p class="kontak-desc">Jangan tunda perawatan kesehatan hewan peliharaan Anda. Tim kami siap membantu setiap hari. Chat langsung via WhatsApp untuk konsultasi cepat.</p>
+
+      <div class="kontak-actions">
+        <a href="https://wa.me/6287789788818" class="btn-wa" target="_blank">
+          <span class="btn-wa-icon">💬</span>
+          Chat WhatsApp Sekarang
+        </a>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem">
+          <a href="tel:+6287789788818" style="color:rgba(255,255,255,0.55);font-size:0.875rem;text-decoration:none;display:flex;align-items:center;gap:6px">
+            📞 0877-8978-8818
+          </a>
+          <a href="https://instagram.com/pethuis" target="_blank" style="color:rgba(255,255,255,0.55);font-size:0.875rem;text-decoration:none;display:flex;align-items:center;gap:6px">
+            📸 @pethuis
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kontak-info-cards fade-up" style="transition-delay:.15s">
+      <div class="info-card">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Alamat</div>
+          <div class="info-value">Jl. RS. Fatmawati Raya No.26<br/>Pondok Labu, Cilandak<br/>Jakarta Selatan</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🕐</div>
+        <div>
+          <div class="info-label">Jam Operasional</div>
+          <div class="info-value">Senin – Sabtu: 09.00 – 18.00<br/>Minggu: 09.00 – 16.00</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🗺️</div>
+        <div>
+          <div class="info-label">Lokasi</div>
+          <div class="info-value">Seberang Mall One Belpark<br/>
+            <a href="https://maps.google.com/?q=Pet+Huis+Veterinary+Fatmawati" target="_blank"
+               style="color:var(--amber);font-size:0.85rem;font-weight:600">
+              Buka di Google Maps →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Pet <span>Huis</span> Veterinary Practice</div>
+  <div class="footer-links">
+    <a href="#layanan">Layanan</a>
+    <a href="#dokter">Dokter</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#kontak">Kontak</a>
+  </div>
+  <div class="footer-copy">© 2025 Pet Huis. Built with ❤️ by Ainabler</div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Intersection observer for fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
