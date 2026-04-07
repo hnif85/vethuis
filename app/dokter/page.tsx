@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Navbar from "../components/Navbar";
 
 export const metadata: Metadata = {
   title: "Tim Dokter | Pet Huis Veterinary Practice",
@@ -34,38 +35,6 @@ const doctors = [
   },
 ];
 
-function Navbar({ padding }: { padding: string }) {
-  return (
-    <nav className={`fixed inset-x-0 top-0 z-50 flex h-[72px] items-center justify-between border-b border-amber/15 bg-[color-mix(in_srgb,var(--off-white)_92%,transparent)] backdrop-blur-md ${padding}`}>
-      <Link href="/" className="flex items-center gap-2 font-heading text-xl text-charcoal">
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber text-base text-white">
-          🏥
-        </span>
-        Pet <span className="text-amber">Huis</span>
-      </Link>
-      <div className="hidden items-center gap-8 text-sm font-semibold text-body md:flex">
-        <Link href="/#layanan" className="hover:text-amber transition-colors">
-          Layanan
-        </Link>
-        <Link href="/dokter" className="hover:text-amber transition-colors text-amber">
-          Tim Dokter
-        </Link>
-        <Link href="/#galeri" className="hover:text-amber transition-colors">
-          Galeri
-        </Link>
-        <Link href="/#testimoni" className="hover:text-amber transition-colors">
-          Testimoni
-        </Link>
-        <Link
-          href="/#kontak"
-          className="rounded-full bg-amber px-4 py-2 text-white shadow-[0_4px_16px_rgba(245,166,35,0.35)] transition hover:bg-amber-dark"
-        >
-          Hubungi Kami
-        </Link>
-      </div>
-    </nav>
-  );
-}
 
 export default function DokterPage() {
   const padding = "px-6 md:px-12 lg:px-16";
